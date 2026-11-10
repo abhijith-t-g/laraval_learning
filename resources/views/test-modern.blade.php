@@ -9,10 +9,18 @@
 
         <div x-data="{ count: 0, message: '' }" class="mt-4">
             <button @click="count++; message = '🎉 Alpine.js reactive clicks: ' + count"
-                    class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded transition">
+                class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded transition">
                 Click Me (Alpine Test)
             </button>
             <p x-text="message" class="mt-3 text-indigo-600 font-semibold"></p>
+        </div>
+
+        <div x-data="{ open: false }">
+            <button @click="open = !open"
+                class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded transition">
+                Click Me (Alpine Test)
+            </button>
+            <p x-text="open ? 'Open' : 'Closed'" class="mt-3 text-indigo-600 font-semibold"></p>
         </div>
     </div>
 </x-layouts.app>
