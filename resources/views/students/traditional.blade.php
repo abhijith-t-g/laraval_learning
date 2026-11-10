@@ -19,7 +19,14 @@
                 <tr class="border-collapse border border-gray-800 ">
                     <td class="border-collapse border border-gray-800 px-2 ">{{ $student->name }}</td>
                     <td class="border-collapse border border-gray-800 px-2">{{ $student->email }}</td>
-                    <td id="status" class="border-collapse border border-gray-800 px-2">{{ $student->status }}</td>
+                    <td id="status"
+                        class="border-collapse border border-gray-800 px-2 {{ $student->status == 'Active'
+                            ? 'text-green-500'
+                            : ($student->status == 'Pending'
+                                ? 'text-yellow-500'
+                                : 'text-red-500') }}">
+                        {{ $student->status }}
+                    </td>
                     <td class="border-collapse border border-gray-800 px-2">{{ $student->course }}</td>
                 </tr>
             @endforeach
@@ -27,19 +34,3 @@
 
     </div>
 @endsection
-
-@push('scripts')
-    <script type="module">
-        $(document).ready(function() {
-            var status = $("#status").text();
-            if(status == "Active"){
-                $("#status").addClass("text-green-500");
-            }
-            else if(status== "Pending"){
-                $("#status").addClass("text-yellow-100");
-            }else{
-                $("#status").addClass("text-gray-800");
-            }
-        });
-    </script>
-@endpush
